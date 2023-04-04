@@ -1,7 +1,7 @@
 class Solution:
     def helper(self, nums, cur_perm):
         if len(nums) == 0:
-            self.all_perms.append(tuple(cur_perm))
+            self.all_perms.append(cur_perm.copy())
         
         for i in range(len(nums)):
             cur_perm.append(nums[i])
