@@ -1,16 +1,30 @@
 class Solution:
-    def helper(self, nums, cur_perm):
-        if len(nums) == 0:
-            self.all_perms.append(cur_perm.copy())
-        
-        for i in range(len(nums)):
-            cur_perm.append(nums[i])
-            self.helper(nums[:i]+nums[i+1:],cur_perm)
-            cur_perm.pop()
-        
-        
     def permute(self, nums: List[int]) -> List[List[int]]:
-        self.all_perms = []
-        self.helper(nums, [])
-        return self.all_perms
         
+        all_orders = []
+        
+        def rec_helper(cur_order, cands):
+            
+            # base case
+            
+            if len(cands) == 0:
+                all_orders.append(cur_order.copy())
+                
+            
+            
+            for cand in cands:
+                
+                cur_order.append(cand) # we chose it
+                
+                next_cands = [n_cand for n_cand in cands if n_cand != cand ]
+                rec_helper(cur_order, next_cands)
+                
+                # we remove the previouse choice before we go to the next choice
+                cur_order.pop()
+        
+        rec_helper([], nums)
+        
+        return all_orders
+                
+            
+            
