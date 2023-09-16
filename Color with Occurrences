@@ -7,7 +7,7 @@ from fractions import Fraction as frac
 import math
 import operator
  
-hpop = heappop
+hpop = heappop 
 hpush = heappush
 MOD = 10**9 + 7
  
